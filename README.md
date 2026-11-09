@@ -1,33 +1,28 @@
-# Jeremiah Animaku — Portfolio
+# My portfolio
 
-A static version of Jeremiah's portfolio, preserving the design, project descriptions, resume, and native expandable project details. No database or browser JavaScript is required.
+Hi, I’m Jeremiah Animaku, a Computer Science student at Fisk University. This is the source code for my personal portfolio.
 
-## Publish from GitHub with Cloudflare Workers
+I wanted a place where I could share what I’ve worked on and explain some of the thinking behind it. I enjoy building applications that work well and feel good to use, and I’m interested in the systems that make those experiences possible.
 
-1. Put these files at the root of `jerryanimaku/portfolio` (not inside an extra folder).
-2. In your Cloudflare account, open Workers & Pages and create a Worker by importing this GitHub repository. Authorize access to this repository only.
-3. Set the Worker/project name to `portfolio`, matching `wrangler.jsonc`.
-4. Set production branch to `main` and root directory to the repository root.
-5. Leave the build command empty: the website files are ready to serve.
-6. Set the deploy command to `npm run deploy`. The dependency installation should use the committed npm lockfile.
-7. Deploy, then verify the assigned workers.dev address.
-8. Under the Worker's Settings > Domains & Routes, add the custom domain `jerryanimakucsportfolio.com` after you have registered it and its zone is active in this Cloudflare account.
-9. Make a small text change in GitHub, commit to main, and confirm a successful automatic deployment.
+The website brings together my software projects, internship experience, and a little of what I do outside of coding.
 
-GitHub connection and Cloudflare Git integration are separate authorizations. This package does not configure your account or purchase/register a domain. Your previous ChatGPT-hosted site remains independent.
+## What’s on the site
 
-## Edit
+- My experience at Microsoft, including the API and dashboard I worked on and what I learned while deploying to Azure.
+- Projects in mobile development, including my GitHub followers app, Real Circle, and an iOS health app I’m still developing.
+- Work Out!, the team project I worked on through Google Tech Exchange. One of my favorite contributions was noticing coordinates in our dataset and using them to create an interactive map. There’s also a demo video.
+- A photography section with a few of my photos. I enjoy creating things visually, and I wanted the site to reflect that side of me too.
+- My résumé and ways to get in touch.
 
-- `site/index.html`: all page content and links.
-- `site/styles.css`: layout, colors and responsive design.
-- `site/Jeremiah-Animaku-Resume.pdf`: replace to update the resume.
-- `site/images/`: create this folder for screenshots, then reference `/images/filename.png` from the HTML.
+## How it’s built
 
-The domain can be changed later without changing the repository name. No credentials belong in this repository.
+The site uses HTML, CSS, and a small amount of JavaScript for the photography gallery. It’s hosted on Cloudflare Workers, with Wrangler handling deployment.
 
-## Local preview and validation
+I’ve kept the structure simple so I can update the content, add projects, and change photos without a complicated build process.
 
-Install Node.js 22 or newer, then:
+## Running it locally
+
+You’ll need Node.js 22 or newer.
 
 ```sh
 npm ci
@@ -35,6 +30,34 @@ npm run check
 npm run dev
 ```
 
-Open the local URL printed by Wrangler. `npm run deploy` publishes only after Cloudflare authentication is configured. A local deployment dry run is `npx wrangler deploy --dry-run`.
+Open the local address printed in the terminal. The check command looks for missing assets, broken section links, and a few key pieces of content.
 
-This version converts the previous React/Vinext presentation into directly editable HTML and CSS. All current interactions use native links and details elements, so their behavior is preserved without a framework build.
+## Making changes
+
+Most updates happen in these files:
+
+- `site/index.html` — page content, project descriptions, and links
+- `site/styles.css` — styling and responsive layouts
+- `site/gallery.js` — photography gallery controls
+- `site/images/` — portraits and showcase photographs
+- `site/Jeremiah-Animaku-Resume.pdf` — the downloadable résumé
+
+The Work Out! demo is embedded from Google Drive. Its sharing settings need to allow visitors to watch it.
+
+## Deployment
+
+The Worker configuration is in `wrangler.jsonc`, and the website files are served from `site/`.
+
+With Cloudflare’s Git integration connected to this repository, changes pushed to `main` can deploy automatically. For a manual deployment after signing in to Cloudflare:
+
+```sh
+npm run deploy
+```
+
+## Find me
+
+- [GitHub](https://github.com/jerryanimaku)
+- [LinkedIn](https://www.linkedin.com/in/jerryanimaku/)
+- [Email](mailto:animakujeremiah@gmail.com)
+
+I’ll keep adding to this as I build more things and learn along the way.
